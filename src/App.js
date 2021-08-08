@@ -56,7 +56,7 @@ function App() {
         <span className="total">
           ${' '}
           {expenses.reduce((acc, curr) => {
-            return (acc += curr.amount);
+            return (acc += parseInt(curr.amount));
           }, 0)}
         </span>
       </h1>
