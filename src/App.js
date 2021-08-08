@@ -34,6 +34,8 @@ function App() {
     if (charge !== '' && amount > 0) {
       const singleExpense = { id: uuidv4(), charge, amount };
       setExpenses([...expenses, singleExpense]);
+      setCharge('');
+      setAmount('');
     }
   };
 
