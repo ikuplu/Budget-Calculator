@@ -22,17 +22,19 @@ function App() {
 
   // *************** Functionality ****************
   const handleCharge = (e) => {
-    console.log(e.target.value);
     setCharge(e.target.value);
   };
 
   const handleAmount = (e) => {
-    console.log(e.target.value);
     setAmount(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (charge !== '' && amount > 0) {
+      const singleExpense = { id: uuidv4(), charge, amount };
+      setExpenses([...expenses, singleExpense]);
+    }
   };
 
   return (
