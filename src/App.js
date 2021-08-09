@@ -78,6 +78,12 @@ function App() {
   // Edit single item
   const editItem = (id) => {
     console.log(`Edited item with id: ${id}`);
+    let expense = expenses.find((item) => item.id === id);
+    let { charge, amount } = expense;
+    setCharge(charge);
+    setAmount(amount);
+    setEdit(true);
+    setId(id);
   };
 
   return (
