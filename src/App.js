@@ -61,6 +61,7 @@ function App() {
   // Clear all items
   const clearAllItems = () => {
     console.log('cleared all items');
+    setExpenses([]);
   };
 
   // Clear single item
@@ -86,7 +87,12 @@ function App() {
           handleAmount={handleAmount}
           handleSubmit={handleSubmit}
         />
-        <ExpenseList expenses={expenses} />
+        <ExpenseList
+          expenses={expenses}
+          clearAllItems={clearAllItems}
+          clearSingleItem={clearSingleItem}
+          editItem={editItem}
+        />
       </main>
       <h1>
         total spending:{' '}
