@@ -19,28 +19,63 @@ function App() {
   const [charge, setCharge] = useState('');
   // Single amount
   const [amount, setAmount] = useState('');
+  // Alert
+  const [alert, setAlert] = useState({ show: false });
 
   // *************** Functionality ****************
+  // Handle charge
   const handleCharge = (e) => {
     setCharge(e.target.value);
   };
 
+  // Handle amount
   const handleAmount = (e) => {
     setAmount(e.target.value);
   };
 
+  // Handle alert
+  const handleAlert = ({ type, text }) => {
+    setAlert({ show: true, type, text });
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 3000);
+  };
+
+  // Handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
     if (charge !== '' && amount > 0) {
       const singleExpense = { id: uuidv4(), charge, amount };
       setExpenses([...expenses, singleExpense]);
+      handleAlert({ type: 'success', text: 'item added' });
       setCharge('');
       setAmount('');
+    } else {
+      handleAlert({
+        type: 'danger',
+        text: 'charge type may not be empty and amount has to be bigger than zero',
+      });
     }
+  };
+
+  // Clear all items
+  const clearAllItems = () => {
+    console.log('cleared all items');
+  };
+
+  // Clear single item
+  const clearSingleItem = (id) => {
+    console.log(`Deleted item with id: ${id}`);
+  };
+
+  // Edit single item
+  const editItem = (id) => {
+    console.log(`Edited item with id: ${id}`);
   };
 
   return (
     <>
+      {alert.show && <Alert type={alert.type} text={alert.text} />}
       <Alert />
       <h1>budget calculator</h1>
       <main className="App">
