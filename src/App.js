@@ -21,6 +21,10 @@ function App() {
   const [amount, setAmount] = useState('');
   // Alert
   const [alert, setAlert] = useState({ show: false });
+  // Edit
+  const [edit, setEdit] = useState(false);
+  // Edit item
+  const [id, setId] = useState(0);
 
   // *************** Functionality ****************
   // Handle charge
@@ -88,6 +92,7 @@ function App() {
           handleCharge={handleCharge}
           handleAmount={handleAmount}
           handleSubmit={handleSubmit}
+          edit={edit}
         />
         <ExpenseList
           expenses={expenses}
