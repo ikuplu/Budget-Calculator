@@ -3,7 +3,7 @@ import ExpenseList from './components/ExpenseList';
 import ExpenseForm from './components/ExpenseForm';
 import Alert from './components/Alert';
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // const initialExpenses = [
 //   { id: uuidv4(), charge: 'rent', amount: 1000 },
@@ -29,6 +29,12 @@ function App() {
   const [edit, setEdit] = useState(false);
   // Edit item
   const [id, setId] = useState(0);
+
+  // *************** useEffect ********************
+  useEffect(() => {
+    console.log('we called useEffect');
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+  });
 
   // *************** Functionality ****************
   // Handle charge
