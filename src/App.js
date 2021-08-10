@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     console.log('we called useEffect');
     localStorage.setItem('expenses', JSON.stringify(expenses));
-  });
+  }, [expenses]);
 
   // *************** Functionality ****************
   // Handle charge
