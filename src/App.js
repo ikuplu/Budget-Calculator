@@ -5,11 +5,15 @@ import Alert from './components/Alert';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 
-const initialExpenses = [
-  { id: uuidv4(), charge: 'rent', amount: 1000 },
-  { id: uuidv4(), charge: 'car payment', amount: 800 },
-  { id: uuidv4(), charge: 'credit card bill', amount: 1200 },
-];
+// const initialExpenses = [
+//   { id: uuidv4(), charge: 'rent', amount: 1000 },
+//   { id: uuidv4(), charge: 'car payment', amount: 800 },
+//   { id: uuidv4(), charge: 'credit card bill', amount: 1200 },
+// ];
+
+const initialExpenses = localStorage.getItem('expenses')
+  ? JSON.parse(localStorage.getItem('expenses'))
+  : [];
 
 function App() {
   // *************** State values ****************
